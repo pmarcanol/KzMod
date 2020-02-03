@@ -1,0 +1,5 @@
+C:\Users\Pablo Marcano\Documents\DuckGame\Mods\KzMod\build\obj\x86\Debug\MyMod.dll
+C:\Users\Pablo Marcano\Documents\DuckGame\Mods\KzMod\build\obj\x86\Debug\MyMod.pdb
+C:\Users\Pablo Marcano\Documents\DuckGame\Mods\KzMod\MyMod.dll
+C:\Users\Pablo Marcano\Documents\DuckGame\Mods\KzMod\MyMod.pdb
+C:\Users\Pablo Marcano\Documents\DuckGame\Mods\KzMod\build\obj\x86\Debug\mod.csprojAssemblyReference.cache
