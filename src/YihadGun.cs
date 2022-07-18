@@ -1,12 +1,8 @@
 ﻿using DuckGame;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace MyMod.src
+namespace KzDuckMods
 {
-    [EditorGroup("KzMod|YihadGun")]
+    [EditorGroup("KzMod")]
     public class YihadGun : Grenade
     {
 

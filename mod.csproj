@@ -7,10 +7,11 @@
     <ProjectGuid>{B07BDC3C-3770-4A07-90D8-5C2A68E2172B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyMod</RootNamespace>
-    <AssemblyName>MyMod</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>KzDuckMod</RootNamespace>
+    <AssemblyName>KzMod</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>.\</OutputPath>
@@ -31,11 +33,13 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DuckGame">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Duck Game\DuckGame.exe</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Duck Game\DuckGame.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,10 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\ExplosiveVest.cs" />
-    <Compile Include="src\RagdollGun.cs" />
+    <Compile Include="src\BoxingGun.cs" />
     <Compile Include="src\ImpactGrenade.cs" />
-    <Compile Include="src\Mod.cs" />
-    <Compile Include="src\RagdollAmmo.cs" />
+    <Compile Include="src\KzMod.cs" />
+    <Compile Include="src\BoxingAmmo.cs" />
+    <Compile Include="src\RagdollGun.cs" />
+    <Compile Include="src\ShuffleNade.cs" />
+    <Compile Include="src\ShufflerGun.cs" />
+    <Compile Include="src\Things\ElectricalChargeSafe.cs" />
+    <Compile Include="src\Things\Flash.cs" />
     <Compile Include="src\YihadGun.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

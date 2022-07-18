@@ -1,64 +1,67 @@
 ﻿using DuckGame;
+using KzDuckMods.Things;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace KzDuckMods
 {
-    [EditorGroup("KzMod|BoxingGun")]
-    internal class RagdollGun : DartGun
+    [EditorGroup("guns|explosives")]
+    public class RagdollGun : Gun
     {
+        private SpriteMap _sprite;
 
-        public SpriteMap sprite;
         public RagdollGun(float xval, float yval) : base(xval, yval)
         {
-            sprite = new SpriteMap(GetPath("BoxingGun"), 32, 32, false);
-            graphic = sprite;
-            _editorName = "Boxing Gun";
             this.ammo = 1;
-            this._barrelAngleOffset = 3f;
-            this._kickForce = 6f;
+            this.physicsMaterial = PhysicsMaterial.Metal;
+            this._type = "gun";
+            this._sprite = new SpriteMap(Mod.GetPath<KzMod>("RagdollGun"), 32, 32, false);
+            this.graphic = (Sprite)this._sprite;
+            this.center = new Vec2(15f, 18f);
+            this.scale = new Vec2(0.43f, 0.43f);
+            this.position.Rotate(Maths.DegToRad(90f), Vec2.Zero);
+            this.collisionOffset = new Vec2(-6f, -4f);
+            this.collisionSize = new Vec2(12f, 9f);
+            this._barrelOffsetTL = new Vec2(26f, 14f);
+            this.handAngle = 0.28f;
+            this._sprite.frame = 0;
         }
-        public override void OnPressAction()
-        {
-            if (this.ammo > 0)
-            {
-                if ((double)this._burnLife <= 0.0)
-                {
-                    SFX.Play("dartStick", 0.5f, Rando.Float(0.2f) - 0.1f, 0.0f, false);
-                }
-                else
-                {
-                    --this.ammo;
-                    SFX.Play("dartGunFire", 0.5f, Rando.Float(0.2f) - 0.1f, 0.0f, false);
-                    this.kick = 1f;
-                    if (this.receivingPress || !this.isServerForObject)
-                        return;
-                    Vec2 vec2 = this.Offset(this.barrelOffset);
-                    float radians = this.barrelAngle + Rando.Float(-0.1f, 0.1f);
-                    Dart dart = new MyMod.src.RagdollAmmo(vec2.x, vec2.y, this.owner as Duck, -radians);
-                    this.Fondle((Thing)dart);
-                    if (this.onFire)
-                    {
-                        Level.Add((Thing)SmallFire.New(0.0f, 0.0f, 0.0f, 0.0f, false, (MaterialThing)dart, true, (Thing)this, false));
-                        dart.burning = true;
-                        dart.onFire = true;
-                    }
-                    Vec2 vec = Maths.AngleToVec(radians);
-                    dart.hSpeed = vec.x * 7.32f;
-                    dart.vSpeed = vec.y * 7.32f;
-                    Level.Add((Thing)dart);
-                }
-            }
-            else
-                this.DoAmmoClick();
-        }
+
+        public override void Fire() { }
 
         public override void Update()
         {
-            sprite.frame = this.ammo > 0 ? 0 : 1;
-            sprite.frame = this.burntOut ? 2 : sprite.frame;
+            if (this.owner != null)
+            {
+                int dir = owner.offDir < (sbyte)0 ? -1 : 1;
+                this.handAngle = Math.Abs(this.handAngle) * dir;
+            }
             base.Update();
         }
 
-    }
+        public override void OnPressAction()
+        {
+            base.OnPressAction();
+            if (this.ammo > 0
 
-   
+                )
+            {
+                this._sprite.frame = 1;
+
+                Graphics.flashAdd = 1.3f;
+                Layer.Game.darken = 1.3f;
+
+                this.ammo--;
+                List<Duck> ducks = Level.CheckCircleAll<Duck>(this.position, 2200f).ToList();
+                foreach (Duck duck in ducks)
+                {
+                    duck.GoRagdoll();
+                }
+                SFX.Play(Mod.GetPath<KzMod>("sounds/ragdoll-ray.wav"), 0.8f, 0.0f, 0.0f, false);
+                Level.Add(new Flash(0.4f));
+            }
+        }
+
+    }
 }
