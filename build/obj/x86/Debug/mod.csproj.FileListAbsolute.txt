@@ -5,23 +5,7 @@ C:\Users\Pablo Marcano\Documents\DuckGame\Mods\KzMod\MyMod.pdb
 C:\Users\Pablo Marcano\Documents\DuckGame\Mods\KzMod\build\obj\x86\Debug\mod.csprojAssemblyReference.cache
 C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\build\obj\x86\Debug\mod.csproj.AssemblyReference.cache
 C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\build\obj\x86\Debug\mod.csproj.CoreCompileInputs.cache
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\build\obj\x86\Debug\mod.csproj.CopyComplete
 C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\build\obj\x86\Debug\KzMod.dll
 C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\build\obj\x86\Debug\KzMod.pdb
 C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\KzMod.dll
 C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\KzMod.pdb
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\DuckGame.exe
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\DGSteam.dll
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\DGInput.dll
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\NAudio.dll
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\NVorbis.dll
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\CrashWindow.exe
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\NVorbis.NAudioSupport.dll
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\DuckGame.pdb
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\DuckGame.xml
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\DuckGame.exe.config
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\DGSteam.pdb
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\DGInput.pdb
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\NAudio.xml
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\CrashWindow.pdb
-C:\Users\Carace\AppData\Roaming\DuckGame\Mods\KzMod\CrashWindow.exe.config
