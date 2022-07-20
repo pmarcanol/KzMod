@@ -63,6 +63,13 @@ namespace KzDuckMods
             }
         }
 
-        public override void OnPressAction() { }
+        public override void OnPressAction()
+        {
+            if (this.hasImpacted)
+            {
+                this.vest.AllahuAkhbar();
+                Level.Remove(this);
+            }
+        }
     }
 }
