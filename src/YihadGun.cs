@@ -1,4 +1,5 @@
 ﻿using DuckGame;
+using System;
 
 namespace KzDuckMods
 {
@@ -32,6 +33,10 @@ namespace KzDuckMods
             {
                 this.previousOwner = this.owner as Duck;
             }
+            if (this.owner as Duck == null && Math.Abs(this.hSpeed) <= 0.06f && Math.Abs(this.vSpeed) <= 0.06f) 
+            {
+                this.previousOwner = null;
+            }
             if (this.hasImpacted)
             {
                 this.sprite.frame = 1;
@@ -43,7 +48,7 @@ namespace KzDuckMods
         public override void OnSoftImpact(MaterialThing with, ImpactedFrom from)
         {
 
-            if (with as Duck != null && !_pin && !hasImpacted && with != this.previousOwner)
+            if (with as Duck != null && !hasImpacted && with != this.previousOwner && this.previousOwner != null)
             {
                 var duck = (Duck)with;
                 ExplosiveVest vest = (ExplosiveVest)Editor.CreateThing(typeof(ExplosiveVest));
@@ -65,7 +70,6 @@ namespace KzDuckMods
                 this.vest.AllahuAkhbar();
                 Level.Remove(this);
             }
-            base.OnPressAction();
         }
     }
 }
