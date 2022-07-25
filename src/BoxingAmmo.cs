@@ -20,11 +20,20 @@ namespace KzDuckMods
 
         public override void OnImpact(MaterialThing with, ImpactedFrom from)
         {
-            if (this._stuck || with is Gun || (double)with.weight < 5.0 && !(with is Dart) || (with is FeatherVolume || with is Teleporter || this.removeFromLevel))
+            if (this._stuck || with is Gun || (with is FeatherVolume || with is Teleporter || this.removeFromLevel))
                 return;
+
+            if (with is RagdollPart)
+            {
+                var ragdollPart = with as RagdollPart;
+                Duck duck = ragdollPart.doll._duck;
+                duck.Swear();
+                ragdollPart.hSpeed = this.hSpeed * 3.1f;
+                ragdollPart.vSpeed -= 3.3f;
+            };
+
             if (with is Duck)
             {
-                
                 Duck duck = with as Duck;
                 duck.hSpeed += this.hSpeed * 1.1f;
                 duck.vSpeed -= 3.3f;
