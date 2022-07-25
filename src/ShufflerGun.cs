@@ -49,16 +49,20 @@ namespace KzDuckMods
                 )
             {
                 this._sprite.frame = 1;
-                SFX.Play(Mod.GetPath<KzMod>("sounds/shuffle-wave.wav"), 0.5f, 0.0f, 0.0f, false);
+                SFX.Play(Mod.GetPath<KzMod>("sounds/shuffle-wave.wav"), 1f, 0.0f, 0.0f, false);
                 this.ammo--;
                 List<Duck> ducks = Level.CheckCircleAll<Duck>(this.position, 2200f).ToList();
                 List<Ragdoll> ragdolls = Level.CheckCircleAll<Ragdoll>(this.position, 2200f).ToList();
+                List<TrappedDuck> trappedDucks = Level.CheckCircleAll<TrappedDuck>(this.position, 2200f).ToList();
 
                 List<Tuple<Vec2, Vec2>> positions = new List<Tuple<Vec2, Vec2>>();
                 foreach (Duck duck in ducks)
                 {
-                    positions.Add(new Tuple<Vec2, Vec2>(duck.position, duck.velocity));
-                    SmokeStuff(duck.position);
+                    if (duck._trapped == null)
+                    {
+                        positions.Add(new Tuple<Vec2, Vec2>(duck.position, duck.velocity));
+                        SmokeStuff(duck.position);
+                    }
 
                 }
                 foreach (Ragdoll ragdoll in ragdolls)
@@ -72,13 +76,24 @@ namespace KzDuckMods
                     }
                 }
 
+                foreach (TrappedDuck trappedDuck in trappedDucks)
+                {
+                    Vec2 livePosition = new Vec2(trappedDuck.position.x, trappedDuck.position.y - (float)7);
+                    positions.Add(new Tuple<Vec2, Vec2>(livePosition, trappedDuck.velocity));
+                    SmokeStuff(trappedDuck.position);
+                }
+
+
                 var shuffledPositions = positions.OrderBy(x => Guid.NewGuid()).ToList();
                 int i = 0;
                 foreach (Duck duck in ducks)
                 {
-                    duck.position = shuffledPositions[i].Item1;
-                    duck.velocity = shuffledPositions[i].Item2;
-                    i++;
+                    if (duck._trapped == null)
+                    {
+                        duck.position = shuffledPositions[i].Item1;
+                        duck.velocity = shuffledPositions[i].Item2;
+                        i++;
+                    }
                 }
                 foreach (Ragdoll ragdoll in ragdolls)
                 {
@@ -100,7 +115,13 @@ namespace KzDuckMods
 
                         i++;
                     }
-
+                }
+                foreach (TrappedDuck trappedDuck in trappedDucks)
+                {
+                    trappedDuck.position = shuffledPositions[i].Item1;
+                    trappedDuck.position.y += 7;
+                    trappedDuck.velocity = shuffledPositions[i].Item2;
+                    i++;
                 }
 
             }
@@ -108,8 +129,8 @@ namespace KzDuckMods
 
         private void SmokeStuff(Vec2 position)
         {
-            for (int index = 0; index < 6; ++index)
-                Level.Add((Thing)new ElectricalChargeSafe(position.x, position.y, 0.2f, (Thing)this));
+            for (int index = 0; index < 12; ++index)
+                Level.Add((Thing)new ElectricalChargeSafe(position.x, position.y, 0.1f, (Thing)this));
 
             int smokeAmount = 15;
             for (int i = 0; i < smokeAmount; ++i)

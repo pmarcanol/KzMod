@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="src\ExplosiveVest.cs" />
     <Compile Include="src\BoxingGun.cs" />
-    <Compile Include="src\ImpactGrenade.cs" />
+    <Content Include="src\ImpactGrenade.cs" />
     <Compile Include="src\KzMod.cs" />
     <Compile Include="src\BoxingAmmo.cs" />
     <Compile Include="src\RagdollGun.cs" />

@@ -46,7 +46,7 @@ namespace DuckGame.SwapperMod
         {
             if (!receivingPress)
             {
-                SFX.Play(Mod.GetPath<KzMod>("sounds/shufflenade-teleport.wav"), 0.5f, 0.0f, 0.0f, false);
+                SFX.Play(Mod.GetPath<KzMod>("sounds/shufflenade-teleport.wav"), 1f, 0.0f, 0.0f, false);
 
                 if (!this._pin)
                     return;

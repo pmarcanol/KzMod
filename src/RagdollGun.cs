@@ -58,7 +58,7 @@ namespace KzDuckMods
                 {
                     duck.GoRagdoll();
                 }
-                SFX.Play(Mod.GetPath<KzMod>("sounds/ragdoll-ray.wav"), 0.8f, 0.0f, 0.0f, false);
+                SFX.Play(Mod.GetPath<KzMod>("sounds/ragdoll-ray.wav"), 1.5f, 0.0f, 0.0f, false);
                 Level.Add(new Flash(0.4f));
             }
         }
