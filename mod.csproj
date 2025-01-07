@@ -57,6 +57,7 @@
     <Compile Include="src\KzMod.cs" />
     <Compile Include="src\BoxingAmmo.cs" />
     <Compile Include="src\RagdollGun.cs" />
+    <Compile Include="src\RopeGun.cs" />
     <Compile Include="src\ShuffleNade.cs" />
     <Compile Include="src\ShufflerGun.cs" />
     <Compile Include="src\Things\ElectricalChargeSafe.cs" />
