@@ -6,8 +6,6 @@ namespace KzDuckMods
     [EditorGroup("KzMod")]
     public class YihadGun : Grenade
     {
-
-
         public SpriteMap sprite;
         private bool hasImpacted = false;
         private Duck previousOwner;
@@ -33,7 +31,7 @@ namespace KzDuckMods
             {
                 this.previousOwner = this.owner as Duck;
             }
-            if (this.owner as Duck == null && Math.Abs(this.hSpeed) <= 0.06f && Math.Abs(this.vSpeed) <= 0.06f) 
+            if (this.owner as Duck == null && Math.Abs(this.hSpeed) <= 0.06f && Math.Abs(this.vSpeed) <= 0.06f)
             {
                 this.previousOwner = null;
             }
@@ -47,7 +45,6 @@ namespace KzDuckMods
 
         public override void OnSoftImpact(MaterialThing with, ImpactedFrom from)
         {
-
             if (with as Duck != null && !hasImpacted && with != this.previousOwner && this.previousOwner != null)
             {
                 var duck = (Duck)with;
@@ -56,8 +53,13 @@ namespace KzDuckMods
                 vest.y = duck.y;
                 vest.detonator = this;
                 Level.Add(vest);
-                this.vest = (ExplosiveVest) vest;
-                duck.Equip((Equipment) vest);
+                this.vest = (ExplosiveVest)vest;
+                if (duck.hat != null)
+                {
+                    duck.hat.owner = null;
+                    Level.Remove((Thing)duck.hat);
+                }
+                duck.Equip((Equipment)vest);
                 duck.GiveHoldable(this);
                 hasImpacted = true;
             }
