@@ -7,6 +7,7 @@ using System.Linq;
 namespace KzDuckMods
 {
     [EditorGroup("KzMod")]
+    [BaggedProperty("IsFatal", false)]
     public class RagdollGun : Gun
     {
         private SpriteMap _sprite;

@@ -1,10 +1,10 @@
-﻿using KzDuckMods;
+﻿using DuckGame;
 using KzDuckMods.Things;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DuckGame.SwapperMod
+namespace KzDuckMods
 {
     [EditorGroup("KzMod")]
     public class ShuffleNade : Grenade
