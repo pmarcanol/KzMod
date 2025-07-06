@@ -130,7 +130,7 @@ namespace KzDuckMods
         private void SmokeStuff(Vec2 position)
         {
             for (int index = 0; index < 12; ++index)
-                Level.Add((Thing)new ElectricalChargeSafe(position.x, position.y, 0.1f, (Thing)this));
+                Level.Add((Thing)new ElectricalChargeSafe(position.x, position.y, 0.1f));
 
             int smokeAmount = 15;
             for (int i = 0; i < smokeAmount; ++i)

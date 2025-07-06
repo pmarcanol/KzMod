@@ -21,7 +21,7 @@ namespace KzDuckMods
 
         //kickback?
         //random direction rate , could depend on how hot it is
-
+        
         private Thing _heldObject;
 
         private Sound soundEffect = null;
