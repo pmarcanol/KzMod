@@ -30,7 +30,6 @@ namespace KzDuckMods
                 || with is FeatherVolume
                 || with is Teleporter)
             {
-                Logger.LogToFile("ON IMPACT CONTINUED WITH " + with.GetType().Name);
                 return;
             }
 
@@ -57,7 +56,6 @@ namespace KzDuckMods
             };
 
             this._stuck = true;
-            Logger.LogToFile("ON IMPACT DISSAPEAR WITH " + with.GetType().Name);
 
             Level.Remove((Thing)this);
         }
