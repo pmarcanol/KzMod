@@ -1,5 +1,6 @@
 ﻿
 using DuckGame;
+using KzDuckMods.Things;
 using System;
 
 namespace KzDuckMods
@@ -60,6 +61,20 @@ namespace KzDuckMods
                 case DestroyerType.EmptyWeapons:
                     SetSpeedAndAlpha(0.1f, 0.1f);
                     return;
+            }
+
+
+            if (Editor.editorDraw)
+                return;
+            if (this.GetType() == typeof(DestroyBeam))
+            {
+                float x = this.collisionSize.x + this.x;
+                int num = (int)Math.Ceiling((double)x / 16.0);
+                for (int index = 0; index < num; ++index)
+                {
+                    Level.Add((Thing)new ElectricalChargeSafe(this.x + (float)(index * 16), this.y, 1f));
+                    Level.Add((Thing)new ElectricalChargeSafe(this.x + (float)(index * 16), this.y, 0.4f));
+                }
             }
         }
 

@@ -199,19 +199,24 @@ namespace KzDuckMods
         {
             Dictionary<string, int> propCounts = new Dictionary<string, int>();
             Dictionary<string, Thing> propPrototypes = new Dictionary<string, Thing>();
-            HashSet<string> validProps = new HashSet<string> { "Crate", "Rock", "IceBlock", "Present" };
+            HashSet<string> validProps = new HashSet<string> { "Crate", "SequenceCrate", "Rock", "IceBlock", "Present" };
 
             foreach (Thing thing in Level.current.things)
             {
-                if (thing is PhysicsObject prop && validProps.Contains(prop.GetType().Name))
+                if (thing is Holdable prop)
                 {
-                    string propType = prop.GetType().Name;
-                    if (!propCounts.ContainsKey(propType))
+                    if (validProps.Contains(prop.GetType().Name))
                     {
-                        propCounts[propType] = 0;
-                        propPrototypes[propType] = prop;
+
+                        string propType = prop.GetType().Name;
+                        if (!propCounts.ContainsKey(propType))
+                        {
+                            propCounts[propType] = 0;
+                            propPrototypes[propType] = prop;
+                        }
+                        propCounts[propType]++;
                     }
-                    propCounts[propType]++;
+
                 }
             }
 

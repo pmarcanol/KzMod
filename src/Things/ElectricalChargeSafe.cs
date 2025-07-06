@@ -3,25 +3,26 @@ using System.Collections.Generic;
 
 namespace KzDuckMods.Things
 {
-    public class ElectricalChargeSafe : ElectricalCharge
+    public class ElectricalChargeSafe : Thing
     {
         private List<Vec2> _prevPositions = new List<Vec2>();
         private Vec2 _travelVec;
         private float alphaDecrease;
 
-        public ElectricalChargeSafe(float xpos, float ypos, float alphaDecrease, Thing own) : base(xpos, ypos, 1, own)
+        public ElectricalChargeSafe(float xpos, float ypos, float alphaDecrease) : base(xpos, ypos)
         {
             this.alphaDecrease = alphaDecrease;
             this.offDir = (sbyte)1;
             this._travelVec = new Vec2(Rando.Float(-10f, 10f), Rando.Float(-10f, 10f));
-            this.owner = own;
         }
 
         public override void Update()
         {
             if (this._prevPositions.Count == 0)
+            {
                 this._prevPositions.Insert(0, this.position);
-            Vec2 position = this.position;
+            }
+
             ElectricalChargeSafe electricalCharge = this;
             electricalCharge.position = electricalCharge.position + this._travelVec;
             this._travelVec = new Vec2(Rando.Float(-10f, 10f), Rando.Float(-10f, 10f));
@@ -29,6 +30,8 @@ namespace KzDuckMods.Things
             this.alpha -= alphaDecrease;
             if ((double)this.alpha < 0.0)
                 Level.Remove((Thing)this);
+
+            base.Update();
         }
 
         public override void Draw()

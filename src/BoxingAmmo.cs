@@ -15,13 +15,24 @@ namespace KzDuckMods
             collisionSize = new Vec2(14, 12);
             collisionOffset = new Vec2(-9f, -9f);
             center = new Vec2(8f, 8f);
+            _skipPlatforms = true;
+            _skipAutoPlatforms = true;
             this.weight = 9f;
         }
 
         public override void OnImpact(MaterialThing with, ImpactedFrom from)
         {
-            if (this._stuck || with is Gun || (with is FeatherVolume || with is Teleporter || this.removeFromLevel))
+            if (with is Gun
+                || with is PhysicsRopeSection
+                || with is ScaffoldingTileset
+                || with is Nubber
+                || with is WoodScaffoldingTileset
+                || with is FeatherVolume
+                || with is Teleporter)
+            {
+                Logger.LogToFile("ON IMPACT CONTINUED WITH " + with.GetType().Name);
                 return;
+            }
 
             if (with is RagdollPart)
             {
@@ -44,7 +55,10 @@ namespace KzDuckMods
                 duck.Swear();
                 duck.ThrowItem(true);
             };
+
             this._stuck = true;
+            Logger.LogToFile("ON IMPACT DISSAPEAR WITH " + with.GetType().Name);
+
             Level.Remove((Thing)this);
         }
     }

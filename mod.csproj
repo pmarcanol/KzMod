@@ -39,8 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DuckGame">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Duck Game\DuckGame.exe</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Duck Game\DuckGame.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,17 +50,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\BananaGrenade.cs" />
+    <Compile Include="src\DestroyBeam.cs" />
+    <Compile Include="src\DisguiseBox.cs" />
     <Compile Include="src\ExplosiveVest.cs" />
     <Compile Include="src\BoxingGun.cs" />
     <Content Include="src\ImpactGrenade.cs" />
+    <Compile Include="src\Logger.cs" />
+    <Compile Include="src\RopeGun.cs" />
     <Compile Include="src\KzMod.cs" />
     <Compile Include="src\BoxingAmmo.cs" />
     <Compile Include="src\RagdollGun.cs" />
-    <Compile Include="src\RopeGun.cs" />
     <Compile Include="src\ShuffleNade.cs" />
     <Compile Include="src\ShufflerGun.cs" />
     <Compile Include="src\Things\ElectricalChargeSafe.cs" />
     <Compile Include="src\Things\Flash.cs" />
+    <Compile Include="src\VerticalDestroyBeam.cs" />
     <Compile Include="src\YihadGun.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
