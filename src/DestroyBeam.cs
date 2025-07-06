@@ -68,38 +68,14 @@ namespace KzDuckMods
                 return;
             if (this.GetType() == typeof(DestroyBeam))
             {
-                //if (this._prev != this.position)
-                //{
-                //    this._endPoint = Vec2.Zero;
-                //    for (int index = 0; index < 32; ++index)
-                //    {
-                //        Thing thing = (Thing)Level.CheckLine<Block>(this.position + new Vec2((float)(4 + index * 16), 0.0f), this.position + new Vec2((float)((index + 1) * 16 - 6), 0.0f));
-                //        if (thing != null)
-                //        {
-                //            this._endPoint = new Vec2(thing.left - 2f, this.y);
-                //            break;
-                //        }
-                //    }
-                //    this._prev = this.position;
-                //}
-                //if (this._endPoint != Vec2.Zero)
-                //{
-                    //this.graphic.flipH = true;
-                    //this.graphic.depth = this.depth;
-                    //Graphics.Draw(this.graphic, this._endPoint.x, this._endPoint.y);
-                    //this.graphic.flipH = false;
-                    //this._beam.depth = this.depth - 2;
-                    //float x = this._endPoint.x - this.x;
-                    float x = this.collisionSize.x + this.x;
-                    int num = (int)Math.Ceiling((double)x / 16.0);
-                    for (int index = 0; index < num; ++index)
-                    {
-                        Level.Add((Thing)new ElectricalChargeSafe(this.x + (float)(index * 16), this.y, 1f));
-                        Level.Add((Thing)new ElectricalChargeSafe(this.x + (float)(index * 16), this.y, 0.4f));
-                    }
-                //}
+                float x = this.collisionSize.x + this.x;
+                int num = (int)Math.Ceiling((double)x / 16.0);
+                for (int index = 0; index < num; ++index)
+                {
+                    Level.Add((Thing)new ElectricalChargeSafe(this.x + (float)(index * 16), this.y, 1f));
+                    Level.Add((Thing)new ElectricalChargeSafe(this.x + (float)(index * 16), this.y, 0.4f));
+                }
             }
-
         }
 
         private void SetSpeedAndAlpha(float speed, float alpha)
